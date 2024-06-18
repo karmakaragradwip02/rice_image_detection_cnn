@@ -10,9 +10,19 @@ This project is based upon single class image recognition.
 The model is based upon Convolutional Neural Network.
 
 The model predicts that what type of rice is in the given image.
-The model is build using a tool named tensorflow(by google) and using Jupyter Notebook in Anaconda Navigator.
+The model is build using a tool named tensorflow(by google) and using VS Code in Anaconda Navigator.
 
 The code is given in the repository.
-The model.pkl file is also given in the repository.
 
 Thank you.
+
+MLFLOW_TRACKING_URI=https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow 
+MLFLOW_TRACKING_USERNAME=karmakaragradwip02
+MLFLOW_TRACKING_PASSWORD=9ccb0f28354fcca6469017b32544fa0704b9c343
+python script.py
+
+```bash
+export MLFLOW_TRACKING_URI=https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow 
+export MLFLOW_TRACKING_USERNAME=karmakaragradwip02
+export MLFLOW_TRACKING_PASSWORD=9ccb0f28354fcca6469017b32544fa0704b9c343
+```
