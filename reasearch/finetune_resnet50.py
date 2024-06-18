@@ -101,6 +101,6 @@ def fine_tune_resnet50(train_path, test_path, epochs=5, learning_rate=1e-4):
         print("---------------------------- Fine-tuning ended ----------------------------")
 
 if __name__ == '__main__':
-    train_path = 'output_dataset/train'
-    test_path = 'output_dataset/test'
+    train_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/output_dataset/train'
+    test_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/output_dataset/test'
     fine_tune_resnet50(train_path, test_path)
