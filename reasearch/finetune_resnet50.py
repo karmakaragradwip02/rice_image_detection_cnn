@@ -101,6 +101,16 @@ def fine_tune_resnet50(train_path, test_path, epochs=5, learning_rate=1e-4):
         print("---------------------------- Fine-tuning ended ----------------------------")
 
 if __name__ == '__main__':
+    print("---------------------------Starting---------------------------")
+    MLFLOW_TRACKING_URI = "https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow"
+    os.environ['MLFLOW_TRACKING_URI'] = MLFLOW_TRACKING_URI
+    os.environ['MLFLOW_TRACKING_USERNAME'] = 'karmakaragradwip02'
+    os.environ['MLFLOW_TRACKING_PASSWORD'] = '9ccb0f28354fcca6469017b32544fa0704b9c343'
+
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+    mlflow.set_experiment("CNN Classifier")
+    print("mlflow tracking set")
+    print("---------------------------Mlflow URI set---------------------------------------")
     train_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/output_dataset/train'
     test_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/output_dataset/test'
     fine_tune_resnet50(train_path, test_path)
