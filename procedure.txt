@@ -1,0 +1,32 @@
+artifacts
+	->data
+		->train
+		->test
+	->prepare model
+		->model
+	->training
+		->trained model
+
+
+config.yaml
+	->data ingestion
+		->root path
+		->train path
+		->test path
+	->prepare model
+		->root path
+		->model path
+	->training
+		->root path
+		->trained model path
+
+params.yaml
+	->epochs
+	->weight decay
+	->learning rate
+	->epsilon
+	->input image size
+	->classes 
+	->batch size
+	->decay rate
+
