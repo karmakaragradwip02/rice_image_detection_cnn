@@ -1,36 +1,36 @@
 from dataclasses import dataclass
 from pathlib import Path
 
-@dataclass(frozen=True)
+@dataclass(frozen= True)
 class DataIngestionConfig:
-    root_dir = Path
-    source_url = str
-    local_data_file = Path
-    unzip_dir = Path
+    root_dir: Path
+    source_url: str
+    local_data_file: Path
+    unzip_dir: Path
 
-@dataclass(frozen=True)
+@dataclass(frozen= True)
 class ModelPreparationConfig:
-    root_dir = Path
-    model_dir = Path
-    weight_decay = float
-    learning_rate = float
-    epsilon = float
-    batch_size = int
-    decay_rate = float
-    classes =int
+    root_dir: Path
+    model_dir : Path
+    weight_decay : float
+    learning_rate : float
+    epsilon : float
+    batch_size : int
+    decay_rate : float
+    classes :int
 
-@dataclass(frozen=True)
+@dataclass(frozen= True)
 class ModelTrainingConfig:
-    root_dir = Path
-    trained_model_dir = Path
-    training_data = Path
-    epochs = int
-    batch_size =int
-    image_size = list
+    root_dir : Path
+    trained_model_dir : Path
+    training_data : Path
+    epochs : int
+    batch_size :int
+    image_size : list
 
-@dataclass(frozen=True)
+@dataclass(frozen= True)
 class ModelEvaluation:
-    trained_model_dir = Path
+    trained_model_dir : Path
     training_data: Path
     all_params: dict
     mlflow_uri: str
