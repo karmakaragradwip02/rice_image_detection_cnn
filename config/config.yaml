@@ -1,14 +1,12 @@
 artifacts_root: artifacts
 
 data_ingestion:
-  train_dir: artifacts/data_ingestion
-  test_dir: 
-  local_data_file: artifacts/data_ingestion/data.zip
-  unzip_dir: artifacts/data_ingestion
+  train_dir: artifacts/data/train
+  test_dir: artifacts/data/test/test
 
 
 prepare_model:
-  base_model_path: artifacts/prepare_model/model.h5
+  model_path: artifacts/prepare_model/model.h5
 
 
 training:
