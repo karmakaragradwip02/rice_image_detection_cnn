@@ -165,3 +165,6 @@ output_dataset.zip/*
 Rice_Image_Dataset/*
 output_dataset/*
 reasearch/mlruns/*
+artifacts/*
+artifacts/data/test/test/Arborio/*
+artifacts/data/test/test/Jasmine/*
