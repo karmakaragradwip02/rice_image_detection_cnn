@@ -9,6 +9,13 @@ class DataIngestionConfig:
     unzip_dir: Path
 
 @dataclass(frozen= True)
+class DataPreparationConfig:
+    root_dir: Path
+    data_dir: Path
+    train_dir: Path
+    test_dir: Path
+
+@dataclass(frozen= True)
 class ModelPreparationConfig:
     root_dir: Path
     model_dir : Path

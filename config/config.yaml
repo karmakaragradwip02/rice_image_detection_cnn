@@ -6,6 +6,12 @@ data_ingestion:
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
 
+data_preparation:
+  root_dir: artifacts/data_preparation
+  data_dir: artifacts/data_ingestion/Rice_Image_Dataset
+  train_dir: artifacts/data_preparation/train
+  test_dir: artifacts/data_preparation/test
+
 prepare_model:
   root_dir: artifacts/prepare_model
   model_dir: artifacts/model/model.h5

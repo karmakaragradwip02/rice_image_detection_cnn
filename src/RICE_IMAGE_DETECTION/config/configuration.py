@@ -1,6 +1,6 @@
 from src.RICE_IMAGE_DETECTION.constants import *
 from src.RICE_IMAGE_DETECTION.utils.common import read_yaml, create_directories
-from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig
+from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig
 import os
 
 class ConfigureationManager:
@@ -25,3 +25,17 @@ class ConfigureationManager:
             unzip_dir = config.unzip_dir
         )
         return data_ingestion_cofig
+    
+    def get_data_preparation_config(self) -> DataPreparationConfig:
+        config = self.config.data_preparation
+
+        create_directories([config.root_dir])
+
+        data_preparation_config = DataPreparationConfig(
+            root_dir = config.root_dir,
+            data_dir = config.data_dir,
+            train_dir = config.train_dir,
+            test_dir = config.test_dir
+        )
+
+        return data_preparation_config
