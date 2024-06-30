@@ -18,13 +18,10 @@ class DataPreparationConfig:
 @dataclass(frozen= True)
 class ModelPreparationConfig:
     root_dir: Path
-    model_dir : Path
-    weight_decay : float
-    learning_rate : float
-    epsilon : float
-    batch_size : int
-    decay_rate : float
-    classes :int
+    model_dir: Path
+    weight_decay: float
+    classes: int
+    input_image_size: list
 
 @dataclass(frozen= True)
 class ModelTrainingConfig:

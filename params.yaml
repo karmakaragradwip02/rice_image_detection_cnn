@@ -2,7 +2,7 @@ epochs: 10
 weight_decay: 0.0001
 learning_rate: 0.001
 epsilon: 1e-8
-input_image_size: 
+input_image_size: [64, 64, 3]
 classes: 5
 batch_size: 32
 decay_rate: 0.9

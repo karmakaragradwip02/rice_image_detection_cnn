@@ -1,6 +1,6 @@
 from src.RICE_IMAGE_DETECTION.constants import *
 from src.RICE_IMAGE_DETECTION.utils.common import read_yaml, create_directories
-from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig
+from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig
 import os
 
 class ConfigureationManager:
@@ -39,3 +39,18 @@ class ConfigureationManager:
         )
 
         return data_preparation_config
+    
+    def get_model_preparation_config(self) -> ModelPreparationConfig:
+        config = self.config.prepare_model
+
+        create_directories([config.root_dir])
+
+        model_preparation_config = ModelPreparationConfig(
+            root_dir = Path(config.root_dir),
+            model_dir = Path(config.model_dir),
+            weight_decay = self.params.weight_decay,
+            classes = self.params.classes,
+            input_image_size= self.params.input_image_size
+        )
+
+        return model_preparation_config

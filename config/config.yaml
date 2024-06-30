@@ -14,7 +14,7 @@ data_preparation:
 
 prepare_model:
   root_dir: artifacts/prepare_model
-  model_dir: artifacts/model/model.h5
+  model_dir: artifacts/prepare_model/model.h5
 
 training:
   root_dir: artifacts/training
