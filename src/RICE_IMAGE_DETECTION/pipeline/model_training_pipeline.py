@@ -22,7 +22,7 @@ class ModelTrainerTrainingPipeline:
         trained_model, history = model_training.train(model=cnn, training_set=training_set, test_set=test_set)
         model_training.save_model(model=trained_model)
         model_training.save_history(history=history)
-        trained_model, history = model_training.all_modules(trained_model, history)
+        #trained_model, history = model_training.all_modules(trained_model, history)
     
 
 if __name__ == '__name__':

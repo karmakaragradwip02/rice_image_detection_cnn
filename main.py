@@ -3,7 +3,7 @@ from src.RICE_IMAGE_DETECTION.pipeline.data_ingestion_pipeline import DataIngest
 from src.RICE_IMAGE_DETECTION.pipeline.data_preparation_pipeline import DataPreparationTrainingPipeline
 from src.RICE_IMAGE_DETECTION.pipeline.model_preparation_pipeline import ModelPreparationTrainingPipeline
 from src.RICE_IMAGE_DETECTION.pipeline.model_training_pipeline import ModelTrainerTrainingPipeline
-"""
+
 STAGE_NAME = "DATA INGESTION STAGE"
 
 try:
@@ -16,8 +16,8 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
-"""
-"""
+
+
 STAGE_NAME = "DATA PREPARATION STAGE"
 
 try:
@@ -30,8 +30,8 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
-"""
-"""
+
+
 STAGE_NAME = "MODEL PREPARATION STAGE"
 
 try:
@@ -44,16 +44,15 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
-"""
+
 
 STAGE_NAME = "MODEL TRAINING STAGE"
 
-if __name__ == '__name__':
-    try: 
-        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-        obj = ModelTrainerTrainingPipeline()
-        obj.main()
-        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
-    except Exception as e:
-        logger.exception(e)
-        raise e
+try: 
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    obj = ModelTrainerTrainingPipeline()
+    obj.main()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
+except Exception as e:
+    logger.exception(e)
+    raise e

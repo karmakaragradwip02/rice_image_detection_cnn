@@ -1,4 +1,3 @@
-import os
 import json
 import tensorflow as tf
 from src.RICE_IMAGE_DETECTION import logger
