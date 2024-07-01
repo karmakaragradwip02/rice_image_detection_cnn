@@ -27,6 +27,18 @@ class ModelPreparation:
         logger.info(f"------------Model Preparation Ended-------------")
         return cnn
     
+    def model_compilation(self, model):
+        #decay_rate = self.config.decay_rate
+        #epsilon = self.config.epsilon
+        learning_rate = self.config.learning_rate
+        #lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+        #initial_learning_rate=learning_rate, decay_steps=100000, decay_rate=decay_rate, staircase=True)
+        #optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule, epsilon=epsilon)
+        #model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+        optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+        model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+        return model
+    
     def save_model(self, model):
         model_dir = Path(self.config.model_dir)
         model.save(model_dir)

@@ -13,7 +13,8 @@ class ModelPreparationTrainingPipeline:
         model_preparation_config = config.get_model_preparation_config()
         model_preparation = ModelPreparation(config=model_preparation_config)
         cnn = model_preparation.model()
-        model_preparation.save_model(cnn)
+        model = model_preparation.model_compilation(cnn)
+        model_preparation.save_model(model)
         logger.info(f"---MODEL SUMMARY------")
         logger.info(cnn.summary())
     

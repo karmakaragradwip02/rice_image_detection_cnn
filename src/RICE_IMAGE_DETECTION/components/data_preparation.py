@@ -80,4 +80,4 @@ class DataPreparation:
             class_mode='categorical',
             shuffle=False)  # Ensure the order of the test set remains the same
         logger.info(f"-------The test and train set created-------")
-        #return training_set, test_set
+        return training_set, test_set

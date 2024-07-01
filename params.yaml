@@ -1,4 +1,4 @@
-epochs: 10
+epochs: 5
 weight_decay: 0.0001
 learning_rate: 0.001
 epsilon: 1e-8

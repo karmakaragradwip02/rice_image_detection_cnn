@@ -20,17 +20,20 @@ class ModelPreparationConfig:
     root_dir: Path
     model_dir: Path
     weight_decay: float
-    classes: int
     input_image_size: list
+    learning_rate: float
+    epsilon: float
+    classes: int
+    epochs: int
+    decay_rate: float
 
 @dataclass(frozen= True)
 class ModelTrainingConfig:
-    root_dir : Path
-    trained_model_dir : Path
-    training_data : Path
-    epochs : int
-    batch_size :int
-    image_size : list
+    root_dir: Path
+    model_dir: Path
+    trained_model_dir: Path
+    history_dir: Path
+    epochs: int
 
 @dataclass(frozen= True)
 class ModelEvaluation:

@@ -63,8 +63,8 @@ def main():
     cnn.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
     print("defined model, optimizer, and compilation done")
     print("------------defined model, optimizer, and compilation done----------------------")
-    train_path = 'output_dataset/train'
-    test_path = 'output_dataset/test'
+    train_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/artifacts/data_preparation/train'
+    test_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/artifacts/data_preparation/test'
     train_datagen, test_datagen = datagen()
 
     if not os.path.exists(train_path):
@@ -73,14 +73,18 @@ def main():
         raise FileNotFoundError(f"Test directory not found: {test_path}")
     
     training_set, test_set = train_test_set(train_datagen, test_datagen, train_path, test_path)
+    for data in training_set:
+        images, labels = data
+        print(images.dtype, labels.dtype)
+        break
     print("----------------------------training begin---------------------------")
     with mlflow.start_run() as run:
         try:
             mlflow.log_param('weight_decay', weight_decay)
             mlflow.log_param('learning_rate', learning_rate)
-            mlflow.log_param('epochs', 5)
+            mlflow.log_param('epochs', 1)
             # Fit the model
-            history = cnn.fit(x=training_set, validation_data=test_set, epochs=5)
+            history = cnn.fit(x=training_set, validation_data=test_set, epochs=1)
 
             # Get predictions
             y_pred = np.argmax(cnn.predict(test_set), axis=1)

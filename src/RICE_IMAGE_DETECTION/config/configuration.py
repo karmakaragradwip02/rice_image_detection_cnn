@@ -1,7 +1,6 @@
 from src.RICE_IMAGE_DETECTION.constants import *
 from src.RICE_IMAGE_DETECTION.utils.common import read_yaml, create_directories
-from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig
-import os
+from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig, ModelTrainingConfig
 
 class ConfigureationManager:
     def __init__(self,
@@ -49,8 +48,27 @@ class ConfigureationManager:
             root_dir = Path(config.root_dir),
             model_dir = Path(config.model_dir),
             weight_decay = self.params.weight_decay,
+            input_image_size= self.params.input_image_size,
+            learning_rate = self.params.learning_rate,
+            epsilon = self.params.epsilon,
             classes = self.params.classes,
-            input_image_size= self.params.input_image_size
+            epochs = self.params.epochs,
+            decay_rate = self.params.decay_rate
         )
 
         return model_preparation_config
+    
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        config = self.config.training
+
+        create_directories([config.root_dir])
+
+        model_training_config = ModelTrainingConfig(
+            root_dir = Path(config.root_dir),
+            model_dir = Path(config.model_dir),
+            trained_model_dir = Path(config.trained_model_dir),
+            history_dir= Path(config.history_dir),
+            epochs = self.params.epochs,
+        )
+
+        return model_training_config
