@@ -68,7 +68,7 @@ class ConfigureationManager:
             model_dir = Path(config.model_dir),
             trained_model_dir = Path(config.trained_model_dir),
             history_dir= Path(config.history_dir),
-            epochs = self.params.epochs,
+            epochs = self.params.epochs
         )
 
         return model_training_config
