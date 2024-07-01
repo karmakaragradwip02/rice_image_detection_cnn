@@ -15,7 +15,8 @@ class ModelTraining:
     
     def train(self, model, training_set, test_set):
         logger.info("-----------Model training is beginning----------")
-        history = model.fit(training_set, epochs=1, validation_data=test_set)
+        epochs = self.config.epochs
+        history = model.fit(training_set, epochs=epochs, validation_data=test_set)
         logger.info("-----------Model training is ending----------")
         return model, history
     
