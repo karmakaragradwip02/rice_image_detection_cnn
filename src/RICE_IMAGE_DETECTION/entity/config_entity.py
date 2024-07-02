@@ -14,6 +14,7 @@ class DataPreparationConfig:
     data_dir: Path
     train_dir: Path
     test_dir: Path
+    val_dir: Path
 
 @dataclass(frozen= True)
 class ModelPreparationConfig:
@@ -36,10 +37,12 @@ class ModelTrainingConfig:
     epochs: int
 
 @dataclass(frozen= True)
-class ModelEvaluation:
-    trained_model_dir : Path
-    training_data: Path
-    all_params: dict
+class ModelEvaluationConfig:
+    root_dir: Path
+    trained_model_dir: Path
+    val_dir: Path
+    history_dir: Path
+    graph_dir: Path
     mlflow_uri: str
-    image_size: list
-    batch_size: int
+    all_params: dict
+    epochs: int

@@ -14,15 +14,14 @@ class ModelTrainerTrainingPipeline:
         #data preparation
         data_preparation_config = config.get_data_preparation_config()
         data_preparation = DataPreparation(config=data_preparation_config)
-        training_set, test_set = data_preparation.train_test_set()
+        training_set, val_set = data_preparation.train_test_set()
         #model_training
         model_training_config = config.get_model_training_config()
         model_training = ModelTraining(config=model_training_config)
         cnn = model_training.get_model()
-        trained_model, history = model_training.train(model=cnn, training_set=training_set, test_set=test_set)
+        trained_model, history = model_training.train(model=cnn, training_set=training_set, val_set=val_set)
         model_training.save_model(model=trained_model)
         model_training.save_history(history=history)
-        #trained_model, history = model_training.all_modules(trained_model, history)
     
 
 if __name__ == '__name__':

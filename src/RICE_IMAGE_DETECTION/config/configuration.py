@@ -1,6 +1,6 @@
 from src.RICE_IMAGE_DETECTION.constants import *
 from src.RICE_IMAGE_DETECTION.utils.common import read_yaml, create_directories
-from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig, ModelTrainingConfig
+from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig, ModelTrainingConfig, ModelEvaluationConfig
 
 class ConfigureationManager:
     def __init__(self,
@@ -34,7 +34,8 @@ class ConfigureationManager:
             root_dir = config.root_dir,
             data_dir = config.data_dir,
             train_dir = config.train_dir,
-            test_dir = config.test_dir
+            test_dir = config.test_dir,
+            val_dir = config.val_dir
         )
 
         return data_preparation_config
@@ -72,3 +73,21 @@ class ConfigureationManager:
         )
 
         return model_training_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        create_directories([config.root_dir])
+
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir = Path(config.root_dir),
+            trained_model_dir = Path(config.trained_model_dir),
+            history_dir= Path(config.history_dir),
+            graph_dir = Path(config.graph_dir),
+            val_dir= Path(config.val_dir),
+            mlflow_uri="https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow",
+            all_params=self.params,
+            epochs = self.params.epochs
+        )
+
+        return model_evaluation_config

@@ -13,10 +13,10 @@ class ModelTraining:
         cnn = tf.keras.models.load_model(model_dir)
         return cnn
     
-    def train(self, model, training_set, test_set):
+    def train(self, model, training_set, val_set):
         logger.info("-----------Model training is beginning----------")
         epochs = self.config.epochs
-        history = model.fit(training_set, epochs=epochs, validation_data=test_set)
+        history = model.fit(training_set, epochs=epochs, validation_data=val_set)
         logger.info("-----------Model training is ending----------")
         return model, history
     
@@ -33,5 +33,3 @@ class ModelTraining:
             json.dump(history_dict, f)
         
         logger.info(f"------History saved successfully at {history_dir}---------")
-    #def all_modules(self, model, history):
-        #return model, history
