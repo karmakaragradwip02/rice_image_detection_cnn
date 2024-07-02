@@ -4,7 +4,7 @@ from src.RICE_IMAGE_DETECTION.pipeline.data_preparation_pipeline import DataPrep
 from src.RICE_IMAGE_DETECTION.pipeline.model_preparation_pipeline import ModelPreparationTrainingPipeline
 from src.RICE_IMAGE_DETECTION.pipeline.model_training_pipeline import ModelTrainerTrainingPipeline
 from src.RICE_IMAGE_DETECTION.pipeline.model_evaluation_pipeline import ModelEvaluationTrainingPipeline
-"""
+
 STAGE_NAME = "DATA INGESTION STAGE"
 
 try:
@@ -55,7 +55,7 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
-"""
+
 STAGE_NAME = "MODEL EVALUATION STAGE"
 
 try: 
