@@ -44,6 +44,17 @@ def model(weight_decay):
     ])
     return cnn
 
+"""
+decay_rate = self.config.decay_rate
+        epsilon = self.config.epsilon
+        learning_rate = self.config.learning_rate
+        lr_schedule = tf.keras.optimizers.schedules.ExponentialDecay(
+        initial_learning_rate=learning_rate, decay_steps=100000, decay_rate=decay_rate, staircase=True)
+        optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule, epsilon=epsilon)
+        model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+        return model
+"""
+
 def main():
     print("---------------------------Starting---------------------------")
     MLFLOW_TRACKING_URI = "https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow"
