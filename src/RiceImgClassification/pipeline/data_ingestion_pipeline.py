@@ -1,6 +1,6 @@
-from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from RICE_IMAGE_DETECTION.components.data_ingestion import DataIngestion
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification.config.configuration import ConfigurationManager
+from RiceImgClassification.components.data_ingestion import DataIngestion
+from RiceImgClassification import logger
 
 STAGE_NAME = "DATA INGESTION STAGE"
 
@@ -9,7 +9,7 @@ class DataIngestionTrainingPipeline:
         pass
 
     def main(self):
-        config = ConfigureationManager()
+        config = ConfigurationManager()
         data_ingestion_config = config.get_data_ingestion_config()
         data_ingestion = DataIngestion(config=data_ingestion_config)
         data_ingestion.download_data()

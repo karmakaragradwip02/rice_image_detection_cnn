@@ -6,8 +6,8 @@ import shutil
 import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from sklearn.model_selection import train_test_split
-from RICE_IMAGE_DETECTION import logger
-from RICE_IMAGE_DETECTION.entity.config_entity import DataPreparationConfig
+from RiceImgClassification import logger
+from RiceImgClassification.entity.config_entity import DataPreparationConfig
 
 class DataPreparation:
     def __init__(self, config: DataPreparationConfig):

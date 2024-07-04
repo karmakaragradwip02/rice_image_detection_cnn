@@ -1,8 +1,8 @@
-from RICE_IMAGE_DETECTION.constants import *
-from RICE_IMAGE_DETECTION.utils.common import read_yaml, create_directories
-from RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig, ModelTrainingConfig, ModelEvaluationConfig
+from RiceImgClassification.constants import *
+from RiceImgClassification.utils.common import read_yaml, create_directories
+from RiceImgClassification.entity.config_entity import DataIngestionConfig, DataPreparationConfig, ModelPreparationConfig, ModelTrainingConfig, ModelEvaluationConfig
 
-class ConfigureationManager:
+class ConfigurationManager:
     def __init__(self,
             config_filepath = CONFIG_FILE_PATH,
             params_filepath = PARAMS_FILE_PATH):

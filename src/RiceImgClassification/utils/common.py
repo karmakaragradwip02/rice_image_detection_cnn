@@ -1,7 +1,7 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification import logger
 import json
 import joblib
 from ensure import ensure_annotations

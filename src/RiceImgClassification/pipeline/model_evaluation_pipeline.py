@@ -1,6 +1,6 @@
-from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from RICE_IMAGE_DETECTION.components.model_evaluation import ModelEvaluation 
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification.config.configuration import ConfigureationManager
+from RiceImgClassification.components.model_evaluation import ModelEvaluation 
+from RiceImgClassification import logger
 
 STAGE_NAME = "MODEL EVALUATION STAGE"
 

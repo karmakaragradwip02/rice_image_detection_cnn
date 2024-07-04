@@ -1,6 +1,6 @@
-from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from RICE_IMAGE_DETECTION.components.model_preparation import ModelPreparation
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification.config.configuration import ConfigureationManager
+from RiceImgClassification.components.model_preparation import ModelPreparation
+from RiceImgClassification import logger
 
 STAGE_NAME = "MODEL PREPARATION STAGE"
 

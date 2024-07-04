@@ -1,6 +1,6 @@
-from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from RICE_IMAGE_DETECTION.components.data_preparation import DataPreparation
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification.config.configuration import ConfigureationManager
+from RiceImgClassification.components.data_preparation import DataPreparation
+from RiceImgClassification import logger
 
 STAGE_NAME = "DATA PREPARATION STAGE"
 

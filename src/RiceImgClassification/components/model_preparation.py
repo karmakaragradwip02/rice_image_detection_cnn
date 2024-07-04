@@ -1,7 +1,7 @@
-from RICE_IMAGE_DETECTION import logger
+from RiceImgClassification import logger
 import tensorflow as tf
 from pathlib import Path
-from RICE_IMAGE_DETECTION.entity.config_entity import ModelPreparationConfig
+from RiceImgClassification.entity.config_entity import ModelPreparationConfig
 
 class ModelPreparation:
     def __init__(self, config: ModelPreparationConfig):

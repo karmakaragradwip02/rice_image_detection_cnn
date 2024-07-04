@@ -1,7 +1,7 @@
 import json
 import tensorflow as tf
-from RICE_IMAGE_DETECTION import logger
-from RICE_IMAGE_DETECTION.entity.config_entity import ModelTrainingConfig
+from RiceImgClassification import logger
+from RiceImgClassification.entity.config_entity import ModelTrainingConfig
 
 class ModelTraining:
     def __init__(self, config: ModelTrainingConfig):
