@@ -1,4 +1,4 @@
-from RiceImgClassification.config.configuration import ConfigureationManager
+from RiceImgClassification.config.configuration import ConfigurationManager
 from RiceImgClassification.components.model_preparation import ModelPreparation
 from RiceImgClassification import logger
 
@@ -9,7 +9,7 @@ class ModelPreparationTrainingPipeline:
         pass
 
     def main(self):
-        config = ConfigureationManager()
+        config = ConfigurationManager()
         model_preparation_config = config.get_model_preparation_config()
         model_preparation = ModelPreparation(config=model_preparation_config)
         cnn = model_preparation.model()

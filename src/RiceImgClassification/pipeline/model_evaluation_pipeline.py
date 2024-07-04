@@ -1,4 +1,4 @@
-from RiceImgClassification.config.configuration import ConfigureationManager
+from RiceImgClassification.config.configuration import ConfigurationManager
 from RiceImgClassification.components.model_evaluation import ModelEvaluation 
 from RiceImgClassification import logger
 
@@ -9,7 +9,7 @@ class ModelEvaluationTrainingPipeline:
         pass
 
     def main(self):
-        config = ConfigureationManager()
+        config = ConfigurationManager()
         eval_config = config.get_model_evaluation_config()
         evaluation = ModelEvaluation(eval_config)
         model = evaluation.load_model()

@@ -7,7 +7,7 @@ __version__ = "0.1.0"
 
 REPO_NAME = "rice_image_detection_cnn"
 AUTHOR_USER_NAME = "karmakaragradwip02"
-SRC_REPO = "RICE_IMAGE_DETECTION"
+SRC_REPO = "RiceImgClassification"
 AUTHOR_EMAIL = "karmakaragradwip02@gmail.com"
 
 setuptools.setup(
