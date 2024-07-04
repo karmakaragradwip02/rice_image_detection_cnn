@@ -1,17 +1,17 @@
 stages:
   data_ingestion:
-    cmd: python src/RICE_IMAGE_DETECTION/pipeline/data_ingestion_pipeline.py
+    cmd: python src/RiceImgClassification/pipeline/data_ingestion_pipeline.py
     deps:
-      - src/RICE_IMAGE_DETECTION/pipeline/data_ingestion_pipeline.py
+      - src/RiceImgClassification/pipeline/data_ingestion_pipeline.py
       - config/config.yaml
     outs:
-      - artifacts\data_ingestion\Rice_Image_Dataset
-      - artifacts\data_ingestion\data.zip
+      - artifacts/data_ingestion/Rice_Image_Dataset
+      - artifacts/data_ingestion/data.zip
 
   data_preparation:
-    cmd: python src/RICE_IMAGE_DETECTION/pipeline/data_preparation_pipeline.py
+    cmd: python src/RiceImgClassification/pipeline/data_preparation_pipeline.py
     deps:
-      - src/RICE_IMAGE_DETECTION/pipeline/data_preparation_pipeline.py
+      - src/RiceImgClassification/pipeline/data_preparation_pipeline.py
       - config/config.yaml
       - artifacts/data_ingestion/Rice_Image_Dataset
     outs:
@@ -20,9 +20,9 @@ stages:
       - artifacts/data_preparation/val
 
   prepare_model:
-    cmd: python src/RICE_IMAGE_DETECTION/pipeline/model_preparation_pipeline.py
+    cmd: python src/RiceImgClassification/pipeline/model_preparation_pipeline.py
     deps:
-      - src/RICE_IMAGE_DETECTION/pipeline/model_preparation_pipeline.py
+      - src/RiceImgClassification/pipeline/model_preparation_pipeline.py
       - config/config.yaml
     params:
       - weight_decay
@@ -36,9 +36,9 @@ stages:
     - artifacts/prepare_model/model.h5
 
   training:
-    cmd: python src/RICE_IMAGE_DETECTION/pipeline/model_training_pipeline.py
+    cmd: python src/RiceImgClassification/pipeline/model_training_pipeline.py
     deps:
-      - src/RICE_IMAGE_DETECTION/pipeline/model_training_pipeline.py
+      - src/RiceImgClassification/pipeline/model_training_pipeline.py
       - config/config.yaml
       - artifacts/prepare_model/model.h5
     params:
@@ -46,13 +46,13 @@ stages:
     outs:
       - artifacts/training/model.h5
     metrics:
-      - history.json:
+      - artifacts/training/history.json:
           cache: false
 
   model_evaluation:
-    cmd: python src/RICE_IMAGE_DETECTION/pipeline/model_evaluation_pipeline.py
+    cmd: python src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
     deps:
-      - src/RICE_IMAGE_DETECTION/pipeline/model_evaluation_pipeline.py
+      - src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
       - config/config.yaml
       - artifacts/training
       - artifacts/data_preparation/val

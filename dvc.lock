@@ -1,0 +1,139 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/RiceImgClassification/pipeline/data_ingestion_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: ef4527e1f2df5113cfe492a7c7e464df
+      size: 1060
+    - path: src/RiceImgClassification/pipeline/data_ingestion_pipeline.py
+      hash: md5
+      md5: 7dad1fb183af341a80176232e5e21a41
+      size: 911
+    outs:
+    - path: artifacts/data_ingestion/Rice_Image_Dataset
+      hash: md5
+      md5: 1071310886d0097d67cf8a5095c83c30.dir
+      size: 267349373
+      nfiles: 75000
+    - path: artifacts/data_ingestion/data.zip
+      hash: md5
+      md5: 889a195b5fc96d00a4f43b2c817a7a62
+      size: 228557926
+  data_preparation:
+    cmd: python src/RiceImgClassification/pipeline/data_preparation_pipeline.py
+    deps:
+    - path: artifacts/data_ingestion/Rice_Image_Dataset
+      hash: md5
+      md5: 1071310886d0097d67cf8a5095c83c30.dir
+      size: 267349373
+      nfiles: 75000
+    - path: config/config.yaml
+      hash: md5
+      md5: ef4527e1f2df5113cfe492a7c7e464df
+      size: 1060
+    - path: src/RiceImgClassification/pipeline/data_preparation_pipeline.py
+      hash: md5
+      md5: e22dec70c81772cbee9d251e30d3842e
+      size: 1013
+    outs:
+    - path: artifacts/data_preparation/test
+      hash: md5
+      md5: bea810b45cd67ddd66efd3c3d8630132.dir
+      size: 26755180
+      nfiles: 7500
+    - path: artifacts/data_preparation/train
+      hash: md5
+      md5: 776a4bbeb8b5854dd01cf121318727b1.dir
+      size: 187084442
+      nfiles: 52500
+    - path: artifacts/data_preparation/val
+      hash: md5
+      md5: 33c78ffc0508081cf5cabaef85b24bd4.dir
+      size: 53509751
+      nfiles: 15000
+  prepare_model:
+    cmd: python src/RiceImgClassification/pipeline/model_preparation_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: ef4527e1f2df5113cfe492a7c7e464df
+      size: 1060
+    - path: src/RiceImgClassification/pipeline/model_preparation_pipeline.py
+      hash: md5
+      md5: a534d679d5ba889d059a431c979c06a0
+      size: 1092
+    params:
+      params.yaml:
+        classes: 5
+        decay_rate: 0.9
+        epochs: 1
+        epsilon: 1e-08
+        input_image_size:
+        - 64
+        - 64
+        - 3
+        learning_rate: 0.0001
+        weight_decay: 1e-05
+    outs:
+    - path: artifacts/prepare_model/model.h5
+      hash: md5
+      md5: f128a5501db741718dd5bd47281641f2
+      size: 3283072
+  training:
+    cmd: python src/RiceImgClassification/pipeline/model_training_pipeline.py
+    deps:
+    - path: artifacts/prepare_model/model.h5
+      hash: md5
+      md5: f128a5501db741718dd5bd47281641f2
+      size: 3283072
+    - path: config/config.yaml
+      hash: md5
+      md5: ef4527e1f2df5113cfe492a7c7e464df
+      size: 1060
+    - path: src/RiceImgClassification/pipeline/model_training_pipeline.py
+      hash: md5
+      md5: 6877ec82dd5f90da113c52973bfc9157
+      size: 1440
+    params:
+      params.yaml:
+        epochs: 1
+    outs:
+    - path: artifacts/training/history.json
+      hash: md5
+      md5: 6857c4ce10baa4a4a2f18f35917a5547
+      size: 137
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: 6754911e9bb85d286015a0535c993836
+      size: 9808536
+  model_evaluation:
+    cmd: python src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
+    deps:
+    - path: artifacts/data_preparation/val
+      hash: md5
+      md5: 33c78ffc0508081cf5cabaef85b24bd4.dir
+      size: 53509751
+      nfiles: 15000
+    - path: artifacts/training
+      hash: md5
+      md5: 352d7658435486274d0edd2a6ca40131.dir
+      size: 9808673
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: ef4527e1f2df5113cfe492a7c7e464df
+      size: 1060
+    - path: src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
+      hash: md5
+      md5: 4f0c8bb8c186d1a7f1918c68d88018e2
+      size: 976
+    params:
+      params.yaml:
+        epochs: 1
+    outs:
+    - path: artifacts/evaluation/graphs.png
+      hash: md5
+      md5: 86d5bd2b7904cfb9aa9c64a7a3ba5b6f
+      size: 35302
