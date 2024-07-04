@@ -1,6 +1,6 @@
-from src.RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from src.RICE_IMAGE_DETECTION.components.model_evaluation import ModelEvaluation 
-from src.RICE_IMAGE_DETECTION import logger
+from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
+from RICE_IMAGE_DETECTION.components.model_evaluation import ModelEvaluation 
+from RICE_IMAGE_DETECTION import logger
 
 STAGE_NAME = "MODEL EVALUATION STAGE"
 
@@ -17,7 +17,7 @@ class ModelEvaluationTrainingPipeline:
         evaluation.plot()
         evaluation.log_into_mlflow(model, val_set)
     
-if __name__ == '__name__':
+if __name__ == '__main__':
     try: 
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = ModelEvaluationTrainingPipeline()

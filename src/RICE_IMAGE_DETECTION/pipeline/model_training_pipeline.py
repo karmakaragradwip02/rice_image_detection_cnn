@@ -1,7 +1,7 @@
-from src.RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from src.RICE_IMAGE_DETECTION.components.model_training import ModelTraining
-from src.RICE_IMAGE_DETECTION.components.data_preparation import DataPreparation
-from src.RICE_IMAGE_DETECTION import logger
+from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
+from RICE_IMAGE_DETECTION.components.model_training import ModelTraining
+from RICE_IMAGE_DETECTION.components.data_preparation import DataPreparation
+from RICE_IMAGE_DETECTION import logger
 
 STAGE_NAME = "MODEL TRAINING STAGE"
 
@@ -24,7 +24,7 @@ class ModelTrainerTrainingPipeline:
         model_training.save_history(history=history)
     
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     try: 
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = ModelTrainerTrainingPipeline()

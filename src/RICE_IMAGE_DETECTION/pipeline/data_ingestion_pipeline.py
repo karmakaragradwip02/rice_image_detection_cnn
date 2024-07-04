@@ -1,6 +1,6 @@
-from src.RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from src.RICE_IMAGE_DETECTION.components.data_ingestion import DataIngestion
-from src.RICE_IMAGE_DETECTION import logger
+from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
+from RICE_IMAGE_DETECTION.components.data_ingestion import DataIngestion
+from RICE_IMAGE_DETECTION import logger
 
 STAGE_NAME = "DATA INGESTION STAGE"
 
@@ -16,7 +16,7 @@ class DataIngestionTrainingPipeline:
         data_ingestion.unzip_data()
     
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     try: 
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataIngestionTrainingPipeline()

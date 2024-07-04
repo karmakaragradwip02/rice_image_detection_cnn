@@ -9,8 +9,8 @@ import gdown
 import zipfile
 import gdown
 import zipfile
-from src.RICE_IMAGE_DETECTION import logger
-from src.RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig
+from RICE_IMAGE_DETECTION import logger
+from RICE_IMAGE_DETECTION.entity.config_entity import DataIngestionConfig
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):

@@ -1,6 +1,6 @@
-from src.RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
-from src.RICE_IMAGE_DETECTION.components.data_preparation import DataPreparation
-from src.RICE_IMAGE_DETECTION import logger
+from RICE_IMAGE_DETECTION.config.configuration import ConfigureationManager
+from RICE_IMAGE_DETECTION.components.data_preparation import DataPreparation
+from RICE_IMAGE_DETECTION import logger
 
 STAGE_NAME = "DATA PREPARATION STAGE"
 
@@ -17,7 +17,7 @@ class DataPreparationTrainingPipeline:
         training_set, test_set = data_preparation.train_test_set()
     
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     try: 
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         obj = DataPreparationTrainingPipeline()

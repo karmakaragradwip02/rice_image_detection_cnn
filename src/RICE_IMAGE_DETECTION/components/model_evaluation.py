@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 import matplotlib.pyplot as plt
 from keras.preprocessing.image import ImageDataGenerator
 from sklearn.metrics import precision_score, recall_score, accuracy_score, f1_score, cohen_kappa_score
-from src.RICE_IMAGE_DETECTION.entity.config_entity import ModelEvaluationConfig
+from RICE_IMAGE_DETECTION.entity.config_entity import ModelEvaluationConfig
 
 
 class ModelEvaluation:
