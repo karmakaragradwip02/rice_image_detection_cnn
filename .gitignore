@@ -169,3 +169,4 @@ artifacts/*
 artifacts/data/test/test/Arborio/*
 artifacts/data/test/test/Jasmine/*
 mlruns/*
+uploads/*

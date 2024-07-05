@@ -1,13 +1,13 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, send_from_directory
 import os
-from RiceImgClassification.pipeline import PredictionPipeline
+from src.RiceImgClassification.pipeline.prediction import PredictionPipeline
 
 app = Flask(__name__)
 
 # Route for the homepage
 @app.route('/')
 def home():
-    return render_template('templates/index.html')
+    return render_template('index.html')
 
 # Route to handle image upload and prediction
 @app.route('/predict', methods=['POST'])
@@ -28,7 +28,12 @@ def predict():
         prediction_pipeline = PredictionPipeline(file_path)
         predicted_class = prediction_pipeline.predict()
         
-        return f'The predicted class is: {predicted_class}'
+        return render_template('result.html', image_path=file.filename, predicted_class=predicted_class)
+
+# Route to serve uploaded images
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory('uploads', filename)
 
 if __name__ == '__main__':
     # Ensure the uploads directory exists

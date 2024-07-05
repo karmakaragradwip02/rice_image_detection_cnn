@@ -1,13 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rice Image Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #c1c1c1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .file-input-container {
+            position: relative;
+            width: 100%;
+        }
+        .file-input-label {
+            display: -moz-box;
+            background-color: #037d05;
+            color: white;
+            padding: 10px; /* Changed from 15px to 10px */
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px; /* Changed from 16px to 14px */
+            width: 100%;
+        }
+        .file-input-label:hover {
+            background-color: #037d05;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        input[type="submit"] {
+            background-color: #037d05;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #037d05;
+        }
+    </style>
 </head>
 <body>
-    <h1>Upload an Image for Classification</h1>
-    <form action="/predict" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="container">
+        <h1>Upload an Image for Classification</h1>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="file-input-container">
+                <label for="file-input" class="file-input-label">Choose Image</label>
+                <input type="file" id="file-input" name="file" accept="image/*" required>
+            </div>
+            <input type="submit" value="Upload">
+        </form>
+    </div>
 </body>
 </html>
