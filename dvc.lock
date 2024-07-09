@@ -5,12 +5,12 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: ef4527e1f2df5113cfe492a7c7e464df
-      size: 1060
+      md5: 26ba9fd3c508e215eddf28f9d2d9658f
+      size: 1030
     - path: src/RiceImgClassification/pipeline/data_ingestion_pipeline.py
       hash: md5
-      md5: 7dad1fb183af341a80176232e5e21a41
-      size: 911
+      md5: 7c920d48d74b7542b5fbb8cf86f4220d
+      size: 885
     outs:
     - path: artifacts/data_ingestion/Rice_Image_Dataset
       hash: md5
@@ -31,12 +31,12 @@ stages:
       nfiles: 75000
     - path: config/config.yaml
       hash: md5
-      md5: ef4527e1f2df5113cfe492a7c7e464df
-      size: 1060
+      md5: 26ba9fd3c508e215eddf28f9d2d9658f
+      size: 1030
     - path: src/RiceImgClassification/pipeline/data_preparation_pipeline.py
       hash: md5
-      md5: e22dec70c81772cbee9d251e30d3842e
-      size: 1013
+      md5: 31a2aeab4591f05eeb52caf094a8dfb6
+      size: 986
     outs:
     - path: artifacts/data_preparation/test
       hash: md5
@@ -58,56 +58,64 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: ef4527e1f2df5113cfe492a7c7e464df
-      size: 1060
+      md5: 26ba9fd3c508e215eddf28f9d2d9658f
+      size: 1030
+    - path: params.yaml
+      hash: md5
+      md5: 61a9d1ed59cd85437dbd85c0d67c6937
+      size: 138
     - path: src/RiceImgClassification/pipeline/model_preparation_pipeline.py
       hash: md5
-      md5: a534d679d5ba889d059a431c979c06a0
-      size: 1092
+      md5: e5a459216feed3fca5dc6ffdd2ab4d44
+      size: 1063
     params:
       params.yaml:
         classes: 5
         decay_rate: 0.9
-        epochs: 1
+        epochs: 25
         epsilon: 1e-08
         input_image_size:
         - 64
         - 64
         - 3
         learning_rate: 0.0001
-        weight_decay: 1e-05
+        weight_decay: 0.001
     outs:
     - path: artifacts/prepare_model/model.h5
       hash: md5
-      md5: f128a5501db741718dd5bd47281641f2
-      size: 3283072
+      md5: 65decf41147b9b0b5676e25322b254fc
+      size: 3283104
   training:
     cmd: python src/RiceImgClassification/pipeline/model_training_pipeline.py
     deps:
     - path: artifacts/prepare_model/model.h5
       hash: md5
-      md5: f128a5501db741718dd5bd47281641f2
-      size: 3283072
+      md5: 65decf41147b9b0b5676e25322b254fc
+      size: 3283104
     - path: config/config.yaml
       hash: md5
-      md5: ef4527e1f2df5113cfe492a7c7e464df
-      size: 1060
+      md5: 26ba9fd3c508e215eddf28f9d2d9658f
+      size: 1030
+    - path: params.yaml
+      hash: md5
+      md5: 61a9d1ed59cd85437dbd85c0d67c6937
+      size: 138
     - path: src/RiceImgClassification/pipeline/model_training_pipeline.py
       hash: md5
-      md5: 6877ec82dd5f90da113c52973bfc9157
-      size: 1440
+      md5: ccb66c446b8cd6204f6d2172438b28dc
+      size: 1406
     params:
       params.yaml:
-        epochs: 1
+        epochs: 25
     outs:
     - path: artifacts/training/history.json
       hash: md5
-      md5: 6857c4ce10baa4a4a2f18f35917a5547
-      size: 137
+      md5: 56f1ea2bc6067a086f76f24d7b2f32b5
+      size: 2062
     - path: artifacts/training/model.h5
       hash: md5
-      md5: 6754911e9bb85d286015a0535c993836
-      size: 9808536
+      md5: 1d1880b611ee8de9cf25970b9bd7e0f8
+      size: 6545816
   model_evaluation:
     cmd: python src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
     deps:
@@ -118,22 +126,22 @@ stages:
       nfiles: 15000
     - path: artifacts/training
       hash: md5
-      md5: 352d7658435486274d0edd2a6ca40131.dir
-      size: 9808673
+      md5: 44e8f6995ba49584940c57f789c14435.dir
+      size: 6547878
       nfiles: 2
     - path: config/config.yaml
       hash: md5
-      md5: ef4527e1f2df5113cfe492a7c7e464df
-      size: 1060
+      md5: 26ba9fd3c508e215eddf28f9d2d9658f
+      size: 1030
     - path: src/RiceImgClassification/pipeline/model_evaluation_pipeline.py
       hash: md5
-      md5: 4f0c8bb8c186d1a7f1918c68d88018e2
-      size: 976
+      md5: 1d15103844eb91e40ad2bec9e046e4b3
+      size: 949
     params:
       params.yaml:
-        epochs: 1
+        epochs: 25
     outs:
     - path: artifacts/evaluation/graphs.png
       hash: md5
-      md5: 86d5bd2b7904cfb9aa9c64a7a3ba5b6f
-      size: 35302
+      md5: f4306fcc80fa386ccc09ded9721fe9c2
+      size: 47399
