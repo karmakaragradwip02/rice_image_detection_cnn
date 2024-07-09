@@ -19,12 +19,12 @@ def train_test_set(train_datagen, test_datagen, train_path, test_path):
     training_set = train_datagen.flow_from_directory(
           train_path,
           target_size=(64, 64),
-          batch_size=32,
+          batch_size=64,
           class_mode='categorical')
     test_set = test_datagen.flow_from_directory(
           test_path,
           target_size=(64, 64),
-          batch_size=32,
+          batch_size=64,
           class_mode='categorical',
           shuffle=False)  # Ensure the order of the test set remains the same
     return training_set, test_set
@@ -66,16 +66,17 @@ def main():
     mlflow.set_experiment("CNN Classifier")
     print("mlflow tracking set")
     print("---------------------------Mlflow URI set---------------------------------------")
-    weight_decay = 1e-4  # Weight decay factor
-    learning_rate = 1e-5  # Custom learning rate
+    weight_decay = 1e-2  # Weight decay factor
+    learning_rate = 1e-3  # Custom learning rate
 
     cnn = model(weight_decay)
-    optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+    #optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+    optimizer = tf.keras.optimizers.SGD(learning_rate=learning_rate, momentum=0.9)
     cnn.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
     print("defined model, optimizer, and compilation done")
     print("------------defined model, optimizer, and compilation done----------------------")
-    train_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/artifacts/data_preparation/train'
-    test_path = 'E:/Deep Learning/TENSORFLOW/rice_image_detection/artifacts/data_preparation/test'
+    train_path = 'E:/Deep Learning/TENSORFLOW/rice_image_classification/artifacts/data_preparation/train'
+    test_path = 'E:/Deep Learning/TENSORFLOW/rice_image_classification/artifacts/data_preparation/test'
     train_datagen, test_datagen = datagen()
 
     if not os.path.exists(train_path):
@@ -93,9 +94,9 @@ def main():
         try:
             mlflow.log_param('weight_decay', weight_decay)
             mlflow.log_param('learning_rate', learning_rate)
-            mlflow.log_param('epochs', 1)
+            mlflow.log_param('epochs', 25)
             # Fit the model
-            history = cnn.fit(x=training_set, validation_data=test_set, epochs=1)
+            history = cnn.fit(x=training_set, validation_data=test_set, epochs=25)
 
             # Get predictions
             y_pred = np.argmax(cnn.predict(test_set), axis=1)

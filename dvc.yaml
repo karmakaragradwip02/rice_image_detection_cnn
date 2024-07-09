@@ -24,6 +24,7 @@ stages:
     deps:
       - src/RiceImgClassification/pipeline/model_preparation_pipeline.py
       - config/config.yaml
+      - params.yaml
     params:
       - weight_decay
       - input_image_size
@@ -41,6 +42,7 @@ stages:
       - src/RiceImgClassification/pipeline/model_training_pipeline.py
       - config/config.yaml
       - artifacts/prepare_model/model.h5
+      - params.yaml
     params:
       - epochs
     outs:

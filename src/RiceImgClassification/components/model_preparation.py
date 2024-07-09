@@ -35,7 +35,8 @@ class ModelPreparation:
         #initial_learning_rate=learning_rate, decay_steps=100000, decay_rate=decay_rate, staircase=True)
         #optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule, epsilon=epsilon)
         #model.compile(optimizer=optimizer, loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-        optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+        #optimizer = tf.keras.optimizers.Adam(learning_rate=learning_rate)
+        optimizer = tf.keras.optimizers.SGD(learning_rate=learning_rate, momentum=0.9)
         model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
         return model
     
