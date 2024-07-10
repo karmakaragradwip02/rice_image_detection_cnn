@@ -26,5 +26,5 @@ export MLFLOW_TRACKING_URI=https://dagshub.com/karmakaragradwip02/rice_image_det
 export MLFLOW_TRACKING_USERNAME=karmakaragradwip02
 export MLFLOW_TRACKING_PASSWORD=9ccb0f28354fcca6469017b32544fa0704b9c343
 ```
-##Data Pipeline
+## Data Pipeline
 ![data_pipeline](https://github.com/karmakaragradwip02/rice_image_detection_cnn/assets/99462819/3635c662-d3bf-402c-b7bb-2674eb817aea)
