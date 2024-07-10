@@ -28,3 +28,6 @@ export MLFLOW_TRACKING_PASSWORD=9ccb0f28354fcca6469017b32544fa0704b9c343
 ```
 ## Data Pipeline
 ![data_pipeline](https://github.com/karmakaragradwip02/rice_image_detection_cnn/assets/99462819/3635c662-d3bf-402c-b7bb-2674eb817aea)
+
+## Model Metrics
+![graphs](https://github.com/karmakaragradwip02/rice_image_detection_cnn/assets/99462819/a1b7df74-680b-4139-8ad6-e7a4bf240949)
