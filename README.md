@@ -15,7 +15,7 @@ The dataset is collected from kaggle.
 The link of the kaggle dataset iis given below.
 https://www.kaggle.com/datasets/muratkokludataset/rice-image-dataset
 
-This project is based upon single class image recognition.
+This project is based upon multi class image classification.
 The model is based upon Convolutional Neural Network.
 
 The model predicts that what type of rice is in the given image.
