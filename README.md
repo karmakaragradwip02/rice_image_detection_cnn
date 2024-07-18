@@ -26,9 +26,6 @@ The code is given in the repository.
 Thank you.
 
 MLFLOW_TRACKING_URI=https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow 
-MLFLOW_TRACKING_USERNAME=karmakaragradwip02
-MLFLOW_TRACKING_PASSWORD=*****************************************************************
-python script.py
 
 ```bash
 export MLFLOW_TRACKING_URI=https://dagshub.com/karmakaragradwip02/rice_image_detection_cnn.mlflow 
